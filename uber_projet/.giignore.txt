@@ -1,0 +1,29 @@
+@"
+# secrets
+.env
+.env.*
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# node
+node_modules/
+
+# chroma / local vector db artifacts
+dashbord/local_vector_db/
+chromadb/
+chroma/
+*.bin
+
+# logs / db
+*.log
+*.db
+*.sqlite
+
+# ide
+.vscode/
+.idea/
+"@ | Out-File -Encoding utf8 .gitignore
