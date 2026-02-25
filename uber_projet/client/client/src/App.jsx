@@ -6,7 +6,6 @@ function App() {
   const [trips, setTrips] = useState([]);
   const [filterId, setFilterId] = useState("");
   
-  // متغیرهای ویرایش
   const [editId, setEditId] = useState(null); 
   const [editStatus, setEditStatus] = useState(""); 
   
@@ -20,7 +19,6 @@ function App() {
     customer_rating: 5,
   });
 
-  // دریافت داده‌ها
   const fetchTrips = async () => {
     try {
       const url = filterId 
@@ -37,7 +35,6 @@ function App() {
     fetchTrips();
   }, [filterId]);
 
-  // ثبت داده
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -49,7 +46,6 @@ function App() {
     }
   };
 
-  // حذف داده
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure?")) {
       try {
@@ -61,13 +57,11 @@ function App() {
     }
   };
 
-  // شروع ویرایش
   const startEditing = (trip) => {
     setEditId(trip.trip_id);       
     setEditStatus(trip.booking_status); 
   };
 
-  // ذخیره ویرایش
   const saveUpdate = async (trip) => {
     try {
       await axios.put(`http://localhost:5000/trips/${trip.trip_id}`, {
@@ -84,11 +78,9 @@ function App() {
 
   const cancelEdit = () => setEditId(null);
 
-  // --- طراحی صفحه ---
   return (
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
       
-      {/* --- دکمه اتصال به داشبورد Streamlit (جدید) --- */}
       <div style={{ 
         display: "flex", justifyContent: "space-between", alignItems: "center",
         background: "#2c3e50", color: "white", padding: "15px", borderRadius: "8px", marginBottom: "20px"
@@ -106,7 +98,6 @@ function App() {
         </button>
       </div>
 
-      {/* بخش جستجو */}
       <div style={{ marginBottom: "20px", padding: "15px", border: "1px solid #ddd", borderRadius: "8px" }}>
         <h3>🔍 Filter by Customer ID</h3>
         <input
@@ -117,7 +108,6 @@ function App() {
         />
       </div>
 
-      {/* بخش فرم ثبت */}
       <div style={{ marginBottom: "20px", padding: "15px", border: "1px solid #ddd", borderRadius: "8px", background: "#f9f9f9" }}>
         
         <form onSubmit={handleSubmit} style={{ display: "flex", gap: "10px", flexWrap: "wrap", alignItems: "center" }}>
@@ -143,7 +133,6 @@ function App() {
         </form>
       </div>
 
-      {/* جدول نمایش داده‌ها */}
       <table border="1" cellPadding="10" style={{ width: "100%", borderCollapse: "collapse", boxShadow: "0 0 10px rgba(0,0,0,0.1)" }}>
         <thead>
           <tr style={{ background: "#ecf0f1", color: "#2c3e50" }}>
