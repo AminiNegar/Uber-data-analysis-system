@@ -142,7 +142,6 @@ def semantic_search_reasons(query_text: str, top_k=5):
             "sample_trip_id": (metas[i] or {}).get("sample_trip_id"),
         })
 
-    # حذف نتایج ضعیف
     out = [m for m in out if (m["sim"] is not None and m["sim"] >= MIN_SIM)]
     return out
 
@@ -167,9 +166,8 @@ def label_quality(sim: float):
         return "Medium"
     return "Low"
 
-# =========================
+
 # Groq Text-to-SQL
-# =========================
 def get_ai_response(user_question):
     if not GROQ_API_KEY:
         return "ERROR: Please set GROQ_API_KEY in .env file", False
@@ -227,9 +225,8 @@ def validate_and_fix_sql(sql_query):
     
     return sql_query, "OK"
 
-# =========================
 # Data loading / filters
-# =========================
+
 @st.cache_data(ttl=60)
 def load_data():
     try:
