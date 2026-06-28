@@ -1,1 +1,10 @@
+streamlit
+pandas
 plotly
+sqlalchemy
+python-dotenv
+langchain-groq
+langchain-core
+chromadb
+sentence-transformers
+psycopg2-binary
