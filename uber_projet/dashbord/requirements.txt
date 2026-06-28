@@ -8,3 +8,4 @@ langchain-core
 chromadb
 sentence-transformers
 psycopg2-binary
+sqlalchemy
